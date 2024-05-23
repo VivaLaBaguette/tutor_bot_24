@@ -82,13 +82,17 @@ unsigned int Read_Tape_Back_Right(void) {
     return AD_ReadADPin(TAPE_BACK_RIGHT);
 }
 
-unsigned int Read_Tape_Back_Left(void) { return AD_ReadADPin(TAPE_BACK_LEFT); }
+unsigned int Read_Tape_Back_Left(void) { 
+  return AD_ReadADPin(TAPE_BACK_LEFT);
+}
 
 // BUMPER STUFF
 
 // reads bumper state
 //  FL, FR, BL, BR
 
+// TODO: Change the sensor types, these are clearly not what we're using.
+// Doesn't Roach.h provide methods for getting bumpers?
 unsigned char Bot_Bumpers(void) {
     return (HALL_FRONT_LEFT + ((HALL_FRONT_RIGHT) << 1) +
             ((HALL_REAR_LEFT) << 2) + ((HALL_REAR_RIGHT) << 3));

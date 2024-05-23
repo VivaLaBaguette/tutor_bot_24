@@ -48,13 +48,14 @@ typedef enum {
     BATTERY_DISCONNECTED,
     // Definitions for sensors here
     TAPE_DETECTED, 
+    BUMP_NONE, 
     BUMP_FLEFT, 
     BUMP_FRIGHT, 
+    BUMP_FRONT, 
     BUMP_BLEFT, 
     BUMP_BRIGHT, 
-    BUMP_FRONT, 
     BUMP_BACK,
-    NO_BUMP, 
+    BUMP_ALL, 
     NUMBEROFEVENTS,
     
 } ES_EventTyp_t;
@@ -91,7 +92,7 @@ static const char *EventNames[] = {
 // corresponding timer expires. All 16 must be defined. If you are not using
 // a timers, then you can use TIMER_UNUSED
 #define TIMER_UNUSED ((pPostFunc)0)
-#define TIMER0_RESP_FUNC RunBumper
+#define TIMER0_RESP_FUNC PostBumper
 #define TIMER1_RESP_FUNC TIMER_UNUSED
 #define TIMER2_RESP_FUNC TIMER_UNUSED
 #define TIMER3_RESP_FUNC TIMER_UNUSED
