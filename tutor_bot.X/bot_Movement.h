@@ -5,6 +5,7 @@
 #define BOT_MOVE_H
 
 #include <BOARD.h>
+#include <xc.h>
 
 #define BOT_MAX_SPEED 100
 #define BOT_MAX_SLOW_SPEED 99

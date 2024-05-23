@@ -66,7 +66,7 @@ class EnumToString(object):
 	def readInFile(self):
 		# read in the file to get the enum and close it for this pass
 		with open(self.fileName, 'r') as f:
-			f = open(self.fileName, 'r')
+			# f = open(self.fileName, 'r', encoding)
 			self.FileContents = f.read()
 			self.origFileContents=self.FileContents
 		if self.FileContents is None:

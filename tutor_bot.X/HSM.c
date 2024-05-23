@@ -1,72 +1,76 @@
 #include <stdio.h>
-#include "bot_Sensor.h"
+// #include "bot_Sensor.h"
 
+#include "BOARD.h"
 #include "ES_Configure.h"
 #include "ES_Framework.h"
-#include "BOARD.h"
+#include "FindWall.h"
 #include "HSM.h"
-#include "bot_Movement.h"
+// #include "bot_Movement.h"
 
-
-//sub state machines
-
+// sub state machines
 
 typedef enum {
-    Init_State,
+  Init_State,
+  Find_Wall,
+  Follow_Wall,
+  Deposit,
 } HSMState_t;
 
 static const char *StateNames[] = {
     "Init_State",
+    "Find_Wall",
+    "Follow_Wall",
+    "Deposit",
 };
 
 static HSMState_t CurrentState = Init_State;
 static uint8_t MyPriority;
 
 uint8_t InitHSM(uint8_t Priority) {
-    MyPriority = Priority;
-    
-    CurrentState = Init_State;
+  MyPriority = Priority;
 
-    // post the initial transition event
-    if (ES_PostToService(MyPriority, INIT_EVENT) == TRUE) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
+  CurrentState = Init_State;
+
+  // post the initial transition event
+  if (ES_PostToService(MyPriority, INIT_EVENT) == TRUE) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
 }
 
 uint8_t PostHSM(ES_Event ThisEvent) {
-    return ES_PostToService(MyPriority, ThisEvent);
+  return ES_PostToService(MyPriority, ThisEvent);
 }
 
 ES_Event RunHSM(ES_Event ThisEvent) {
-    uint8_t makeTransition = FALSE;
-    HSMState_t nextState;
+  uint8_t makeTransition = FALSE;
+  HSMState_t nextState;
 
-    ES_Tattle();
+  ES_Tattle();
 
-    switch (CurrentState) {
-        case Init_State:
-            if (ThisEvent.EventType == ES_INIT) {
+  switch (CurrentState) {
+  case Init_State:
+    if (ThisEvent.EventType == ES_INIT) {
 
-                nextState = Init_State;
-                makeTransition = TRUE;
-                ThisEvent.EventType = ES_NO_EVENT;
-                ;
-            }
-
-        default:
-            break;
+      nextState = Init_State;
+      makeTransition = TRUE;
+      ThisEvent.EventType = ES_NO_EVENT;
+      ;
     }
 
+  default:
+    break;
+  }
 
-    if (makeTransition == TRUE) {
+  if (makeTransition == TRUE) {
 
-        RunHSM(EXIT_EVENT);
-        CurrentState = nextState;
-        RunHSM(ENTRY_EVENT);
-    }
+    RunHSM(EXIT_EVENT);
+    CurrentState = nextState;
+    RunHSM(ENTRY_EVENT);
+  }
 
-    ES_Tail();
-    return ThisEvent;
+  ES_Tail();
+  return ThisEvent;
 }

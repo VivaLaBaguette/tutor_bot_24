@@ -1,3 +1,4 @@
+
 /*
  * File:   RC_Servo.c
  * Author: Gabriel Hugh Elkaim
@@ -8,7 +9,7 @@
 /******************************************************************************
  * Software License Agreement
  *
- * Copyright © 2011 Microchip Technology Inc.  All rights reserved.
+ * Copyright ï¿½ 2011 Microchip Technology Inc.  All rights reserved.
  * Microchip licenses to you the right to use, modify, copy and distribute
  * Software only when embedded on a Microchip microcontroller or digital
  * signal controller, which is integrated into your product or third party
@@ -37,7 +38,7 @@
 #include <sys/attribs.h>
 
 #include "RC_Servo.h"
-#include <SERIAL.h>
+#include <serial.h>
 
 
 /*******************************************************************************

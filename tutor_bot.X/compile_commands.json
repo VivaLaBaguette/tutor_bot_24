@@ -1,0 +1,44 @@
+[
+  {
+    "arguments": [
+      "/opt/microchip/xc32/v4.35/bin/xc32-gcc",
+      "-g",
+      "-x",
+      "c",
+      "-c",
+      "-mprocessor=32MX320F128H",
+      "-fno-common",
+      "-I../ECE118_files/include",
+      "-I.",
+      "-DXPRJ_default=default",
+      "-mdfp=/opt/microchip/mplabx/v6.20/packs/Microchip/PIC32MX_DFP/1.5.259",
+      "-o",
+      "build/default/production/HSM.o",
+      "HSM.c"
+    ],
+    "directory": "/home/alex/tutor_bot_24/tutor_bot.X",
+    "file": "/home/alex/tutor_bot_24/tutor_bot.X/HSM.c",
+    "output": "/home/alex/tutor_bot_24/tutor_bot.X/build/default/production/HSM.o"
+  },
+  {
+    "arguments": [
+      "/opt/microchip/xc32/v4.35/bin/xc32-gcc",
+      "-g",
+      "-x",
+      "c",
+      "-c",
+      "-mprocessor=32MX320F128H",
+      "-fno-common",
+      "-I../ECE118_files/include",
+      "-I.",
+      "-DXPRJ_default=default",
+      "-mdfp=/opt/microchip/mplabx/v6.20/packs/Microchip/PIC32MX_DFP/1.5.259",
+      "-o",
+      "build/default/production/bot_Movement.o",
+      "bot_Movement.c"
+    ],
+    "directory": "/home/alex/tutor_bot_24/tutor_bot.X",
+    "file": "/home/alex/tutor_bot_24/tutor_bot.X/bot_Movement.c",
+    "output": "/home/alex/tutor_bot_24/tutor_bot.X/build/default/production/bot_Movement.o"
+  }
+]
